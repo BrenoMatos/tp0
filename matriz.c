@@ -64,10 +64,10 @@ int Soma(int i,int j,int *v){
 	{
 		auxSoma+=v[k];
 	}
-	printf("MIN %d MAX %d\n",i,j );
-	for ( i = 0; i < 8; i++) {
-		printf("%d ", v[i]);
-	}
+	// printf("MIN %d MAX %d\n",i,j );
+	// for ( i = 0; i < 8; i++) {
+	// 	printf("%d ", v[i]);
+	// }
 	return auxSoma;//valor entao eh retornado
 }
 
@@ -190,8 +190,8 @@ void leituraArquivo(){
 		}
 		if (strcmp(operacao,"Sum")==0)
 		{
+			imprime(m,n);
 			printf("%d\n", m[n1-1][n2-1].sum );
-			//imprime(m,n);
 
 		}
 		else if (strcmp(operacao,"Min")==0)
