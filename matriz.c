@@ -16,7 +16,7 @@ int Min(int i,int j,int *v){
 	}
 
 	auxMin = v[min];//para realizar as comparações
-	for (k = min; k <= max; k++)//percorre o vetor e checa, sequencialmente, qual o menor valor naquele intervalo
+	for (k = min + 1; k <= max; k++)//percorre o vetor e checa, sequencialmente, qual o menor valor naquele intervalo
 	{
 		if (auxMin > v[k])
 		{
@@ -39,7 +39,7 @@ int Max(int i,int j,int *v){
 	}
 
 	auxMax = v[min];//para realizar as comparações
-	for (k = min; k <= max; k++)//percorre o vetor e checa, sequencialmente, qual o menor valor naquele intervalo
+	for (k = min+1; k <= max; k++)//percorre o vetor e checa, sequencialmente, qual o menor valor naquele intervalo
 	{
 		if (auxMax < v[k])
 		{
@@ -71,11 +71,12 @@ int Soma(int i,int j,int *v){
 	return auxSoma;//valor entao eh retornado
 }
 
-void atualiza(int min,int n,celula **m,int *v){//atualizar tudo, pq a matriz é imbecil
+void atualiza(int n,celula **m,int *v){//atualizar tudo, pq a matriz é imbecil
 	int i,j;
-	for (i = min; i < n; i++)
+
+	for (i = 0; i < n; i++)
 	{
-		for (j = min; j < n; j++)
+		for (j = 0; j < n; j++)
 		{
 			m[i][j].min = Min(i,j,v);//atualiza a matriz APENAS nas celulas que serao alteradas por Sub ou Add
 			m[i][j].max = Max(i,j,v);
@@ -100,7 +101,7 @@ void Add(int i,int j,int *v,celula **m,int n){//adiciona um a todos os elementos
 		v[k]++;
 	}
 
-	atualiza(min,n ,m,v);
+	atualiza(n ,m,v);
 
 }
 
@@ -120,7 +121,7 @@ void Sub(int i,int j, int *v,celula **m,int n){
 		v[l]--;
 	}
 
-	atualiza(min,n ,m,v);//aqui estava n - 1
+	atualiza(n ,m,v);//aqui estava n - 1
 }
 
 
@@ -190,7 +191,7 @@ void leituraArquivo(){
 		}
 		if (strcmp(operacao,"Sum")==0)
 		{
-			imprime(m,n);
+			//imprime(m,n);
 			printf("%d\n", m[n1-1][n2-1].sum );
 
 		}
